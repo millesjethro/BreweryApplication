@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="120dp">
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="match_parent"
+        android:layout_width="413dp"
         android:layout_height="match_parent"
         android:background="#20000000"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-49dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/companyName"
@@ -29,47 +32,52 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        android:id="@+id/flagImg"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/companyName"
-        app:layout_constraintVertical_bias="0.229"
         app:srcCompat="@drawable/ic_launcher_background" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="@+id/imageView9"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_launcher_background" />
+    <TextView
+        android:id="@+id/txtCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Country: "
+        app:layout_constraintStart_toEndOf="@+id/flagImg"
+        app:layout_constraintTop_toTopOf="@+id/flagImg" />
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/imageView10"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_launcher_background" />
+    <TextView
+        android:id="@+id/txtState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="State: "
+        app:layout_constraintStart_toStartOf="@+id/txtCountry"
+        app:layout_constraintTop_toBottomOf="@+id/txtCountry" />
 
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-        app:layout_constraintStart_toEndOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_launcher_background" />
+    <TextView
+        android:id="@+id/txtCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City: "
+        app:layout_constraintStart_toStartOf="@+id/txtState"
+        app:layout_constraintTop_toBottomOf="@+id/txtState" />
+
+    <TextView
+        android:id="@+id/txtWebsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Website: "
+        app:layout_constraintStart_toStartOf="@+id/txtBrewerytype"
+        app:layout_constraintTop_toBottomOf="@+id/txtBrewerytype" />
+
+    <TextView
+        android:id="@+id/txtBrewerytype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brewery Type:"
+        app:layout_constraintStart_toEndOf="@+id/txtCountry"
+        app:layout_constraintTop_toTopOf="@+id/txtCountry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

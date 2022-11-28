@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".RandomBreweries">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        tools:layout_editor_absoluteX="158dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRandom"
+        android:layout_width="match_parent"
+        android:layout_height="681dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
