@@ -5,15 +5,12 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.auf.breweryapplication.Adaprters.DataAdapters
 import com.auf.breweryapplication.Models.BrewingInfoData
-import com.auf.breweryapplication.Models.BrewingInformation
 import com.auf.breweryapplication.Services.Helper.Retrofit
 import com.auf.breweryapplication.Services.Repository.ListBreweriesAPI
-import com.auf.breweryapplication.Services.Repository.SearchBreweriesAPI
 import com.auf.breweryapplication.databinding.ActivityListBreweriesBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.ArrayList
 
 class ListBreweries : AppCompatActivity() {
@@ -26,7 +23,7 @@ class ListBreweries : AppCompatActivity() {
         setContentView(binding.root)
 
         brewingData = arrayListOf()
-        adapter = DataAdapters(brewingData)
+        adapter = DataAdapters(brewingData, this)
 
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
         binding.rvBrew.layoutManager = layoutManager
@@ -35,7 +32,7 @@ class ListBreweries : AppCompatActivity() {
 
     }
 
-    private fun BreweriesData(){
+    override fun onResume() {
         super.onResume()
 
         val BrewAPI = Retrofit.getInstance().create(ListBreweriesAPI::class.java)
