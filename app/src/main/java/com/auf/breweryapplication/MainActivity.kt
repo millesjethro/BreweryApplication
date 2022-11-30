@@ -24,10 +24,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Glide.with(this)
             .load("https://img.icons8.com/color/512/bavarian-beer-mug.png")
             .circleCrop()
-            .into(binding.imgSearchBrew)
-        Glide.with(this)
-            .load("https://img.icons8.com/color/512/bavarian-beer-mug.png")
-            .circleCrop()
             .into(binding.imgRandomBrewery)
         Glide.with(this)
             .load("https://static.vecteezy.com/system/resources/thumbnails/007/522/796/small/abstract-geometric-white-stripe-shapes-with-golden-light-in-gradient-white-background-free-vector.jpg")
@@ -38,16 +34,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             .load("https://static.vecteezy.com/system/resources/thumbnails/007/522/796/small/abstract-geometric-white-stripe-shapes-with-golden-light-in-gradient-white-background-free-vector.jpg")
             .transform(RoundedCorners(25))
             .override(390,120)
-            .into(binding.brewSearch)
-        Glide.with(this)
-            .load("https://static.vecteezy.com/system/resources/thumbnails/007/522/796/small/abstract-geometric-white-stripe-shapes-with-golden-light-in-gradient-white-background-free-vector.jpg")
-            .transform(RoundedCorners(25))
-            .override(390,120)
             .into(binding.brewRandom)
 
 
         binding.brewList.setOnClickListener(this)
-        binding.brewSearch.setOnClickListener(this)
         binding.brewRandom.setOnClickListener(this)
     }
 
@@ -55,10 +45,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when(p0!!.id){
             (R.id.brewList)->{
                 val intent = Intent(this,ListBreweries::class.java)
-                startActivity(intent)
-            }
-            (R.id.brewSearch)->{
-                val intent = Intent(this,SearchBreweries::class.java)
                 startActivity(intent)
             }
             (R.id.brewRandom)->{

@@ -19,25 +19,10 @@
         android:id="@+id/imgBtnRandom"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="@+id/rvRandom"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/rvRandom"
         app:layout_constraintTop_toBottomOf="@+id/rvRandom" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="214dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="16dp"
-        android:ems="12"
-        android:hint="# of item Random"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgBtnRandom"
-        app:layout_constraintEnd_toStartOf="@+id/imgBtnRandom"
-        app:layout_constraintTop_toTopOf="@+id/imgBtnRandom"
-        app:layout_constraintVertical_bias="0.479" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
