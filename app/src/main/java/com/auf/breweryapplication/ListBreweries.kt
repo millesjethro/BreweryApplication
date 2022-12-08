@@ -25,9 +25,9 @@ class ListBreweries : AppCompatActivity(), View.OnClickListener{
     private lateinit var binding: ActivityListBreweriesBinding
     private lateinit var adapter: DataAdapters
     private lateinit var brewingData: ArrayList<BrewingInformation>
-    private var page = 0
+
     private var isLoading:Boolean = false
-    private var pageCount = 0
+    private var pageCount = 1
     private var newData:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class ListBreweries : AppCompatActivity(), View.OnClickListener{
         brewingData = arrayListOf()
         adapter = DataAdapters(brewingData, this)
 
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
         binding.rvBrew.layoutManager = layoutManager
         binding.rvBrew.adapter = adapter
 
@@ -57,7 +57,7 @@ class ListBreweries : AppCompatActivity(), View.OnClickListener{
         binding.rvBrew.addOnScrollListener(object: RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if(!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE){
+                if(!recyclerView.canScrollHorizontally(1) && newState == RecyclerView.SCROLL_STATE_IDLE){
                     if(!isLoading){
                         isLoading = true
                         loadingData()
@@ -75,13 +75,15 @@ class ListBreweries : AppCompatActivity(), View.OnClickListener{
         val BreweriesAPI = Retrofit.getInstance().create(BreweriesAPI::class.java)
 
         GlobalScope.launch(Dispatchers.IO) {
-            val result = BreweriesAPI.getListBreweries(5,type,page)
+            val result = BreweriesAPI.getListBreweries(5,type,pageCount)
             val breweries = result.body()
 
             if(breweries != null){
                 brewingData.addAll(breweries)
                 withContext(Dispatchers.Main){
                     adapter.UpdateData(brewingData)
+                    binding.loadingimg.visibility = View.INVISIBLE
+                    binding.rvBrew.visibility = View.VISIBLE
                 }
             }
         }
@@ -97,6 +99,7 @@ class ListBreweries : AppCompatActivity(), View.OnClickListener{
         when(p0!!.id){
             (R.id.btnReset)->{
                 startLoading()
+                pageCount = 1
                 resetDatas()
                 BreweriesData(newData)
             }
@@ -146,17 +149,7 @@ class ListBreweries : AppCompatActivity(), View.OnClickListener{
     }
     private fun startLoading(){
         binding.loadingimg.visibility = View.VISIBLE
-
-        object :CountDownTimer(21000,1000){
-            override fun onTick(p0: Long) {
-
-            }
-
-            override fun onFinish() {
-                binding.loadingimg.visibility = View.INVISIBLE
-            }
-
-        }.start()
+        binding.rvBrew.visibility = View.INVISIBLE
     }
 
 }
